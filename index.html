@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard Farmacia Angeluz</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="style.css" />
-  <script src="app.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Farmacia</title>
+  <!--libreria de iconos-->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <script src="app.js" defer></script>
 </head>
 <body>
-  <div class="menu-dashboard">
-    <div class="top-menu">
-      <div class="logo">
-        <img src="Logo de Farmacia Ángeluz.png" alt="Logo" />
-        <span class="logo-text">Farmacia Angeluz</span>
-      </div>
-      <div class="toggle">
-        <i class='bx bx-menu'></i>
-      </div>
+  <!-- Menu lateral -->
+  <section id="sidebar">
+    <a class="sidebar__brand"><i class='bx bx-capsule'></i>Farmacia Angeluz</a>
+    <ul class="sidebar__menu">
+
+      <li class="sidebar__divisor" data-text="OPERACIONES"> Operaciones</li>
+
+      <li>  <a href="#" class="active">  <i class="bx bx-bar-chart siderbar__icon"></i>Inventario </a></li>
+      <li> <a href="#"> <i class="bx bx-file-blank siderbar__icon"> </i> Factura</a></li>
+      <li> <a href="#"> <i class="bx bx-message-square siderbar__icon"> </i> Compras</a></li>
+
+      <li class="sidebar__divisor" data-text="CATALOGOS"> Catalogos<li></li>
+
+      <li> <a href="#"> <i class="bx bx-table siderbar__icon"> </i> Tablas Catalogos</a></li>
+        <ul class="sidebar__dropdown">
+                <li class="bx bx-user siderbar__icon"> <a href="#"> Clientes</a></li>
+                <li class="bx bx-cart siderbar__icon"> <a href="#"> Proveedores</a></li>
+                <li class="bx bx-category siderbar__icon"> <a href="#"> Categoria</a></li>
+                <li class="bx bx-building siderbar__icon"> <a href="#"> Sucursales</a></li>
+        </ul>
+
+      <li> <a href="#"> <i class="bx bx-test-tube siderbar__icon"> </i> Examenes Clinicos</a></li>
+      <li> <a href="#"> <i class="bx bx-check-circle siderbar__icon"> </i> Resultados</a></li>
+      <li> <a href="#"> <i class="bx bxs-chart sidebar__icon"></i>Reportes</a></li>
+
+    </ul>
+
+  </section >
+  <!-- Aqui termino el menu lateral -->
+
+  <!-- Menu de navegación -->
+  <section id="content">
+    <nav>
+       <!-- Este es el input de busqueda -->
+          <form class="nav__form-group" action="">
+                <div class="nav__form-group">
+                    <input id="SearchInput" class="nav__form-group-input" type="text" placeholder="Buscar...">
+                    <i class="bx bx-search nav__form-group-icon"></i>
+                </div>
+          </form>
+
+          <!-- iconos de notificaciones -->
+            <a class="nav__link" href="#"> <i class="bx bx-home nav__link-icon"></i> </a>
+            <a class="nav__link" href="#"> <i class="bx bxs-bell nav__link-icon"></i>
+                <span class="nav__link-badge">5</span> </a>
+            <a href="#"> <i class="bx bxs-log-out-circle nav__link-icon"></i> Cerrar sesion</a>
+    </nav>
+  </section>
+  <!-- aqui termina el menu de navegacion -->
+
+    <!-- Contenido principal -->
+  <main>
+    <div id="contenido-principal" class="dashboard">
+
     </div>
-
-    
-
-    <div class="menu">
-      <div class="enlace" data-seccion="inicio"><i class="bx bx-grid-alt"></i><span>Dashboard</span></div>
-      <div class="enlace"  data-seccion="clientes" ><i class="bx bx-user"></i><span>Clientes</span></div>
-      <div class="enlace"><i class="bx bx-bar-chart"></i><span>Productos</span></div>
-      <div class="enlace"><i class="bx bx-message-square"></i><span>Venta</span></div>
-      <div class="enlace"><i class="bx bx-file-blank"></i><span>Compras</span></div>
-      <div class="enlace"><i class="bx bx-cart"></i><span>Proveedores</span></div>
-      <div class="enlace"><i class="bx bx-heart"></i><span>Exámenes</span></div>
-      <div class="enlace"><i class="bx bx-cog"></i><span>Configuración</span></div>
-    </div>
-  </div>
-
-  <div id="contenido-principal" class="dashboard">
-
-  </div>
-  
+  </main>
 </body>
 </html>

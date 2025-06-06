@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
 :root {
   --blanco: #e0e0e0;
@@ -116,8 +116,10 @@ body {
 /* ----- DASHBOARD PRINCIPAL ----- */
 .dashboard {
   flex: 1;
+  padding-top: 0px;
   padding: 30px;
   color: #333;
+  height: 100vh;
 }
 
 .cards {
@@ -138,4 +140,4 @@ body {
 
 .card:hover {
   transform: translateY(-5px);
-}
+} */

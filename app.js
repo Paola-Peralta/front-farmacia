@@ -13,21 +13,21 @@ toggle.addEventListener("click", () => {
   }
 });
 
-enlacesMenu.forEach((enlace) => {
-  enlace.addEventListener("click", () => {
-    const seccion = enlace.getAttribute("data-seccion"); // ej: "clientes"
-    fetch(`pages/${seccion}.html`)
-      .then(res => res.text())
-      .then(html => {
-        contenedor.innerHTML = html; // Muestra el contenido en el div
-      });
-  });
-});
+// enlacesMenu.forEach((enlace) => {
+//   enlace.addEventListener("click", () => {
+//     const seccion = enlace.getAttribute("data-seccion"); // ej: "clientes"
+//     fetch(`pages/${seccion}.html`)
+//       .then(res => res.text())
+//       .then(html => {
+//         contenedor.innerHTML = html; // Muestra el contenido en el div
+//       });
+//   });
+// });
 
-window.addEventListener("DOMContentLoaded", () => {
-  fetch("pages/inicio.html")
-    .then(res => res.text())
-    .then(html => {
-      contenedor.innerHTML = html;
-    });
-});
+// window.addEventListener("DOMContentLoaded", () => {
+//   fetch("pages/inicio.html")
+//     .then(res => res.text())
+//     .then(html => {
+//       contenedor.innerHTML = html;
+//     });
+// });
