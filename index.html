@@ -6,32 +6,40 @@
   <title>Dashboard Farmacia</title>
   <!--libreria de iconos-->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <!-- Menu lateral -->
-  <section id="sidebar">
-    <a class="sidebar__brand"><i class='bx bx-capsule'></i>Farmacia Angeluz</a>
+  <section id="sidebar" class="sidebar">
+    <a href="#" class="sidebar__brand" > <i class="bx bxs-capsule sidebar__icon"> </i>Farmacia Angeluz</a>
+    <!-- <div class="sidebar__top-menu">
+      <div class="sidebar__brand">
+        <span class="sidebar__logo-text">Farmacia Angeluz</span>
+      </div>
+      <div class="sidebar__toggle">
+        <i class='bx bx-menu'></i>
+      </div> -->
+
     <ul class="sidebar__menu">
 
       <li class="sidebar__divisor" data-text="OPERACIONES"> Operaciones</li>
 
-      <li>  <a href="#" class="active">  <i class="bx bx-bar-chart siderbar__icon"></i>Inventario </a></li>
-      <li> <a href="#"> <i class="bx bx-file-blank siderbar__icon"> </i> Factura</a></li>
-      <li> <a href="#"> <i class="bx bx-message-square siderbar__icon"> </i> Compras</a></li>
+      <li>  <a href="#" class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
+      <li> <a href="#"> <i class="bx bx-file-blank sidebar__icon"> </i> Factura</a></li>
+      <li> <a href="#"> <i class="bx bx-message-square sidebar__icon"> </i> Compras</a></li>
 
       <li class="sidebar__divisor" data-text="CATALOGOS"> Catalogos<li></li>
 
-      <li> <a href="#"> <i class="bx bx-table siderbar__icon"> </i> Tablas Catalogos</a></li>
+      <li> <a href="#"> <i class="bx bx-table icon-right"> </i> Tablas Catalogos</a> <i class="bx bx-chevron-right sidebar__icon--right"></i></li>
         <ul class="sidebar__dropdown">
-                <li class="bx bx-user siderbar__icon"> <a href="#"> Clientes</a></li>
-                <li class="bx bx-cart siderbar__icon"> <a href="#"> Proveedores</a></li>
-                <li class="bx bx-category siderbar__icon"> <a href="#"> Categoria</a></li>
-                <li class="bx bx-building siderbar__icon"> <a href="#"> Sucursales</a></li>
+                <li> <a href="#" class="bx bx-user sidebar__icon"> Clientes</a></li>
+                <li> <a href="#" class="bx bx-cart sidebar__icon"> Proveedores</a></li>
+                <li> <a href="#" class="bx bx-category sidebar__icon"> Categoria</a></li>
+                <li> <a href="#" class="bx bx-building sidebar__icon"> Sucursales</a></li>
         </ul>
 
-      <li> <a href="#"> <i class="bx bx-test-tube siderbar__icon"> </i> Examenes Clinicos</a></li>
-      <li> <a href="#"> <i class="bx bx-check-circle siderbar__icon"> </i> Resultados</a></li>
+      <li> <a href="#"> <i class="bx bx-test-tube sidebar__icon"> </i> Examenes Clinicos</a></li>
+      <li> <a href="#"> <i class="bx bx-check-circle sidebar__icon"> </i> Resultados</a></li>
       <li> <a href="#"> <i class="bx bxs-chart sidebar__icon"></i>Reportes</a></li>
 
     </ul>
@@ -42,6 +50,7 @@
   <!-- Menu de navegación -->
   <section id="content">
     <nav>
+      <i class="bx bx-menu nav__link-sidebar"> </i>
        <!-- Este es el input de busqueda -->
           <form class="nav__form-group" action="">
                 <div class="nav__form-group">
@@ -61,7 +70,7 @@
 
     <!-- Contenido principal -->
   <main>
-    <div id="contenido-principal" class="dashboard">
+    <div id="contentMain" class="dashboard">
 
     </div>
   </main>
