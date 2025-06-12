@@ -12,36 +12,31 @@
   <!-- Menu lateral -->
   <section id="sidebar" class="sidebar">
     <a href="#" class="sidebar__brand" > <i class="bx bxs-capsule sidebar__icon"> </i>Farmacia Angeluz</a>
-    <!-- <div class="sidebar__top-menu">
-      <div class="sidebar__brand">
-        <span class="sidebar__logo-text">Farmacia Angeluz</span>
-      </div>
-      <div class="sidebar__toggle">
-        <i class='bx bx-menu'></i>
-      </div> -->
 
     <ul class="sidebar__menu">
 
       <li class="sidebar__divisor" data-text="OPERACIONES"> Operaciones</li>
 
-      <li>  <a href="#" class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
+      <li>  <a href="/pages/clientes.html" class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
       <li> <a href="#"> <i class="bx bx-file-blank sidebar__icon"> </i> Factura</a></li>
       <li> <a href="#"> <i class="bx bx-message-square sidebar__icon"> </i> Compras</a></li>
 
-      <li class="sidebar__divisor" data-text="CATALOGOS"> Catalogos<li></li>
+      <li class="sidebar__divisor" data-text="CATALOGOS"> Catalogos</li>
+      <li> 
+        <a href="#"> <i class="bx bx-table sidebar__icon"> </i> Tablas Catalogos <i class="bx bx-chevron-right sidebar__icon--right"></i></a>
 
-      <li> <a href="#"> <i class="bx bx-table icon-right"> </i> Tablas Catalogos</a> <i class="bx bx-chevron-right sidebar__icon--right"></i></li>
         <ul class="sidebar__dropdown">
                 <li> <a href="#" class="bx bx-user sidebar__icon"> Clientes</a></li>
                 <li> <a href="#" class="bx bx-cart sidebar__icon"> Proveedores</a></li>
                 <li> <a href="#" class="bx bx-category sidebar__icon"> Categoria</a></li>
                 <li> <a href="#" class="bx bx-building sidebar__icon"> Sucursales</a></li>
         </ul>
+      </li>
 
-      <li> <a href="#"> <i class="bx bx-test-tube sidebar__icon"> </i> Examenes Clinicos</a></li>
-      <li> <a href="#"> <i class="bx bx-check-circle sidebar__icon"> </i> Resultados</a></li>
-      <li> <a href="#"> <i class="bx bxs-chart sidebar__icon"></i>Reportes</a></li>
-
+        <li> <a href="#"> <i class="bx bx-test-tube sidebar__icon"> </i> Examenes Clinicos</a></li>
+        <li> <a href="#"> <i class="bx bx-check-circle sidebar__icon"> </i> Resultados</a></li>
+        <li> <a href="#"> <i class="bx bxs-chart sidebar__icon"></i>Reportes</a></li>
+      
     </ul>
 
   </section >
@@ -49,6 +44,7 @@
 
   <!-- Menu de navegación -->
   <section id="content">
+    <!-- NAVBAR -->
     <nav>
       <i class="bx bx-menu nav__link-sidebar"> </i>
        <!-- Este es el input de busqueda -->
@@ -59,20 +55,21 @@
                 </div>
           </form>
 
-          <!-- iconos de notificaciones -->
+            <!-- iconos de notificaciones -->
             <a class="nav__link" href="#"> <i class="bx bx-home nav__link-icon"></i> </a>
             <a class="nav__link" href="#"> <i class="bx bxs-bell nav__link-icon"></i>
                 <span class="nav__link-badge">5</span> </a>
-            <a href="#"> <i class="bx bxs-log-out-circle nav__link-icon"></i> Cerrar sesion</a>
+            <li><a class="nav__link"  href="#"> <i class="bx bxs-log-out-circle nav__link-icon"></i>Cerrar Sesión</a></li>
     </nav>
+
+     <!-- Contenido principal -->
+    <main>
+      <div id="contentMain" class="dashboard">
+
+      </div>
+    </main>
   </section>
-  <!-- aqui termina el menu de navegacion -->
 
-    <!-- Contenido principal -->
-  <main>
-    <div id="contentMain" class="dashboard">
-
-    </div>
-  </main>
+  <script src="./app.js"></script>
 </body>
 </html>
