@@ -6,6 +6,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+#content {
+	position: relative;
+	width: calc(100% - 260px);
+	left: 260px;
+	transition: all .3s ease;
+}
 
 main .main__data {
 	display: flex;
