@@ -63,7 +63,6 @@ toggleSidebar.addEventListener('click', function () {
 })
 
 
-
 // Esperar a que el DOM cargue
 document.addEventListener("DOMContentLoaded", function () {
   const links = document.querySelectorAll(".sidebar__menu a");
