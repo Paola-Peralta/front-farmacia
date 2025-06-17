@@ -277,3 +277,17 @@ nav .nav__link .nav__link-badge{
     
 } 
  
+main {
+	width: 100%;
+	padding: 24px 20px 20px 20px;
+}
+
+main .main__title {
+	font-size: 28px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.main__section {
+  display: none;
+}

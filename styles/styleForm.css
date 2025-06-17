@@ -1,16 +1,32 @@
 /* @import url('https://fonts.googleapis.com/css2') */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
+:root {
+  --blanco: #e0e0e0;
+  --Azul-opacidad: #184463;
+  --bg-menu: #003053;
+  --bg-body: #C7E1FF;
+  --dark-grey: #8d8d8d;
+  --grey: #F1F0F6;
+}
+
 #content {
 	position: relative;
 	width: calc(100% - 260px);
 	left: 260px;
 	transition: all .3s ease;
+}
+
+main {
+  width: 100%;
+  padding: 24px 20px 20px 30px;
 }
 
 main .main__data {
@@ -24,24 +40,24 @@ main .main__data .content-data {
 	flex-grow: 1;
 	flex-basis: 400px;
 	padding: 20px;
-	background: var(--light);
+	background: var(--grey);
 	border-radius: 10px;
 	box-shadow: 4px 4px 16px rgba(0, 0, 0, .1);
 }
 
-main .main__data .content-data h3 {
+main .content-data .head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+main .main__data .content-data h2 {
 	font-size: 20px;
 	font-weight: 600;
 }
 
-/*Formulario*/
 
-main form {
-	margin-top: 6px;
-}
-
-
-/*Tablas*/
 .container {
   width: 100%;
   height: 80%;
@@ -57,17 +73,180 @@ main form {
   margin: auto 12px;
 }
 
-.main__div-header {
+.main__div-header  span {
   font-weight: 900;
   font-size: 20px;
   word-break: break-all;
 }
 
-#new {
+.main__new-register {
   font-size: 16px;
   padding: 8px;
   border-radius: 5px;
   border: none;
   color: white;
   background-color: #0C5FCD;
+}
+
+.main__new-register:hover {
+  background-color: var(--bg-menu);
+}
+.main__divTable {
+  padding: 10px;
+  width: auto; 
+  height:inherit; 
+  overflow:auto;
+}
+
+.main__divTable::-webkit-scrollbar {
+  width: 12px;
+  background-color: whitesmoke; 
+}
+
+.main__divTable::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: darkgray; 
+}
+
+.main__divTable-table {
+  width: 100%;
+  border-spacing: 10px;
+  word-break: break-all;
+  border-collapse: collapse;
+}
+
+.main__divTable-table--thead tr th{
+  background-color: whitesmoke;
+  border-bottom: 1px solid rgb(238, 235, 235)!important;
+  padding: 5px;
+  text-align: start;
+  margin-bottom: 50px;
+}
+
+.main__divTable-table--tbody tr td {
+  padding: 6px;
+  border-bottom: 1px solid rgb(238, 235, 235)!important;
+  text-align: start;
+  max-width: 200px;
+   margin-bottom: 50px;
+}
+
+
+thead tr th.edit {
+  text-align: center;
+}
+
+tbody tr td .opciones {
+  text-align: center;
+}
+
+td button {
+  border: none;
+  outline: none;
+  background: transparent;
+  align-items: center;
+}
+
+td button {
+  font-size: 25px;
+  text-align: center;
+}
+
+td button:first-child {
+  margin-right: 10px;
+}
+
+
+/*estilo del modal*/
+.modal__container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+  .modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  width: 50%;
+}  
+
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columnas */
+  gap: 20px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+} 
+
+.modal label {
+  font-size: 14px;
+  width: 100%;
+}
+
+.modal input {
+  width: 100%;
+  outline: none;
+  padding: 5px 10px; 
+  margin-bottom: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.modal button {
+  width: 100%;
+  margin: 10px auto;
+  outline: none;
+  border-radius: 20px; 
+  padding: 5px 10px; 
+  border: none;
+  background-color: #0C5FCD;
+  color: rgb(255, 255, 255);
+}
+.modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.modal .close-btn:hover {
+  color: #e74c3c;
+}
+
+.active {
+  display: flex;
+}
+
+.active .modal {
+  animation: modal .4s;
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -60px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }

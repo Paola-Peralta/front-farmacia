@@ -21,7 +21,7 @@
 
       <li class="sidebar__divisor" data-text="OPERACIONES"> Operaciones</li>
 
-      <li>  <a href="#" class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
+      <li>  <a href="#"  class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
       <li> <a href="#"> <i class="bx bx-file-blank sidebar__icon"> </i> Factura</a></li>
       <li> <a href="#"> <i class="bx bx-message-square sidebar__icon"> </i> Compras</a></li>
 
@@ -30,8 +30,8 @@
         <a href="#"> <i class="bx bx-table sidebar__icon"> </i> Tablas Catalogos <i class="bx bx-chevron-right sidebar__icon--right"></i></a>
 
         <ul class="sidebar__dropdown">
-                <li> <a href="/pages/clientes.html" class="bx bx-user sidebar__icon"> Clientes</a></li>
-                <li> <a href="#" class="bx bx-cart sidebar__icon"> Proveedores</a></li>
+                <li> <a href="#"  data-target="section-clientes"  class="bx bx-user sidebar__icon"> Clientes</a></li>
+                <li> <a href="#" data-target="section-proveedores" class="bx bx-cart sidebar__icon"> Proveedores</a></li>
                 <li> <a href="#" class="bx bx-category sidebar__icon"> Categoria</a></li>
                 <li> <a href="#" class="bx bx-building sidebar__icon"> Sucursales</a></li>
         </ul>
@@ -65,12 +65,86 @@
                 <span class="nav__link-badge">5</span> </a>
             <li><a class="nav__link"  href="#"> <i class="bx bxs-log-out-circle nav__link-icon"></i>Cerrar Sesión</a></li>
     </nav>
+    <!-- Aqui termina la barra nevegacion -->
 
      <!-- Contenido principal -->
     <main>
-      <div id="contentMain" class="dashboard">
+      <h1>Panel administrativo de Farmacia Angeluz</h1>
+
+      <div  class="main__data  main__section" id="section-proveedores">
+       <div class="content-data">
+         <h1>estos son los proveddores </h1>
+       </div>
 
       </div>
+
+      <div class="main__data main__section"  id="section-clientes" > 
+                <div class="content-data">
+                    <h2>Registro de clientes</h2>
+
+                    <div class="main__divTable">
+                        <div class="main__div-header">
+                            <button onclick="openModal()" id="new" class="main__new-register">Registrar Cliente</button>
+                        </div>
+                        <table class="main__divTable-table">
+                            <thead class="main__divTable-table--thead">
+                                    <th>Código</th>
+                                    <th>Nombres</th>
+                                    <th>Primer Apellido</th>
+                                    <th>Segundo Apellido</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th class="edit">Editar</th>
+                                    <th class="edit">Eliminar</th>                  
+                            </thead>
+                            <tbody class="main__divTable-table-tbody" id="clientTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                    <!--MODAL-->
+                    <div id="modalAPI"  class="modal__container">
+                        <div class="modal">
+                            <span class="close-btn">&times;</span>
+                            <form id="clientsForm">
+                                <h2>Agregar nuevo cliente</h2>
+                                <br>
+                                <input type="hidden" id="clientId">
+
+                                 <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="n-codigo">Código</label>
+                                        <input id="n-codigo" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="n-name">Nombres</label>
+                                        <input id="n-name" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="n-fname">Primer Apellido</label>
+                                        <input id="n-fname" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="n-sname">Segundo Apellido</label>
+                                        <input id="n-sname" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="n-address">Dirección</label>
+                                        <input id="n-address" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="n-phone">Teléfono</label>
+                                        <input id="n-phone" type="text" required />
+                                    </div>
+                                </div>
+                                <button type="submit" id="btnSave">Guardar</button>
+
+                            </form>
+                        </div>
+                    </div>
+
+            </div>
     </main>
   </section>
 
