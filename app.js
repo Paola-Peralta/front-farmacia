@@ -1,4 +1,7 @@
+// import { loadClientes } from './api/clientes';
+
 document.addEventListener("DOMContentLoaded", () => {
+
   const token = localStorage.getItem("accessToken");
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
@@ -71,41 +74,52 @@ toggleSidebar.addEventListener('click', function () {
 	}
 })
 
+document.getElementById('logoutLink').addEventListener('click', function(e) {
+    e.preventDefault();
 
-// // Esperar a que el DOM cargue
-document.addEventListener("DOMContentLoaded", function () {
-  const links = document.querySelectorAll(".sidebar__menu a");
-  const content = document.getElementById("contentMain");
+    // Si usas localStorage o sessionStorage:
+    localStorage.clear();
+    sessionStorage.clear();
 
-  links.forEach(link => {
-    link.addEventListener("click", function (e) {
-      const url = this.getAttribute("href");
+    // O si tienes cookies, puedes limpiarlas también si es necesario
 
-      // Verifica que sea una ruta relativa válida
-      if (url && url !== "#") {
-        e.preventDefault(); // Prevenir navegación completa
-
-        fetch(url)
-          .then(response => {
-            if (!response.ok) throw new Error("Página no encontrada");
-            return response.text();
-          })
-          .then(html => {
-            // Extraer solo el contenido que te interesa
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-            const mainContent = doc.querySelector("main") || doc.body;
-
-            content.innerHTML = mainContent.innerHTML;
-          })
-          .catch(err => {
-            content.innerHTML = `<p style="color:red">Error cargando contenido</p>`;
-            console.error(err);
-          });
-      }
-    });
+    // Redirigir al login
+    window.location.href = '/Auth/login.html';
   });
-});
+// // Esperar a que el DOM cargue
+// document.addEventListener("DOMContentLoaded", function () {
+//   const links = document.querySelectorAll(".sidebar__menu a");
+//   const content = document.getElementById("contentMain");
+
+//   links.forEach(link => {
+//     link.addEventListener("click", function (e) {
+//       const url = this.getAttribute("href");
+
+//       // Verifica que sea una ruta relativa válida
+//       if (url && url !== "#") {
+//         e.preventDefault(); // Prevenir navegación completa
+
+//         fetch(url)
+//           .then(response => {
+//             if (!response.ok) throw new Error("Página no encontrada");
+//             return response.text();
+//           })
+//           .then(html => {
+//             // Extraer solo el contenido que te interesa
+//             const parser = new DOMParser();
+//             const doc = parser.parseFromString(html, "text/html");
+//             const mainContent = doc.querySelector("main") || doc.body;
+
+//             content.innerHTML = mainContent.innerHTML;
+//           })
+//           .catch(err => {
+//             content.innerHTML = `<p style="color:red">Error cargando contenido</p>`;
+//             console.error(err);
+//           });
+//       }
+//     });
+//   });
+// });
 
 document.querySelectorAll('.sidebar__dropdown a').forEach(link => {
     link.addEventListener('click', function (e) {
@@ -121,6 +135,10 @@ document.querySelectorAll('.sidebar__dropdown a').forEach(link => {
       const targetSection = document.getElementById(targetId);
       if (targetSection) {
         targetSection.style.display = 'block';
+
+          if (targetId === 'section-clientes') {
+          loadClientes();
+        }
       }
     });
   });
@@ -189,3 +207,4 @@ function openModal(edit = false, index = 0){
 closeBtn.addEventListener('click', () => {
   modal.classList.remove('active');
 });
+

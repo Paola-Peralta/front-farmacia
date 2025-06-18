@@ -63,7 +63,7 @@
             <a class="nav__link" href="#"> <i class="bx bx-home nav__link-icon"></i> </a>
             <a class="nav__link" href="#"> <i class="bx bxs-bell nav__link-icon"></i>
                 <span class="nav__link-badge">5</span> </a>
-            <li><a class="nav__link"  href="#"> <i class="bx bxs-log-out-circle nav__link-icon"></i>Cerrar Sesión</a></li>
+            <li><a class="nav__link"  href="#" id="logoutLink"> <i class="bx bxs-log-out-circle nav__link-icon"></i>Cerrar Sesión</a></li>
     </nav>
     <!-- Aqui termina la barra nevegacion -->
 
@@ -71,13 +71,8 @@
     <main>
       <h1 class="main__title">Panel administrativo de Farmacia Angeluz</h1>
 
-      <div  class="main__data  main__section" id="section-proveedores">
-       <div class="content-data">
-         <h1>estos son los proveddores </h1>
-       </div>
 
-      </div>
-
+      <!--TABLA Y FORMULARIO DE CLIENTES -->
       <div class="main__data main__section"  id="section-clientes" > 
                 <div class="content-data">
                     <h2>Registro de clientes</h2>
@@ -88,16 +83,18 @@
                         </div>
                         <table class="main__divTable-table">
                             <thead class="main__divTable-table--thead">
-                                    <th>Código</th>
-                                    <th>Nombres</th>
-                                    <th>Primer Apellido</th>
-                                    <th>Segundo Apellido</th>
-                                    <th>Dirección</th>
-                                    <th>Teléfono</th>
-                                    <th class="edit">Editar</th>
-                                    <th class="edit">Eliminar</th>                  
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Nombres</th>
+                                        <th>Primer Apellido</th>
+                                        <th>Segundo Apellido</th>
+                                        <th>Dirección</th>
+                                        <th>Teléfono</th>
+                                        <th class="edit">Editar</th>
+                                        <th class="edit">Eliminar</th> 
+                                    </tr>                 
                             </thead>
-                            <tbody class="main__divTable-table-tbody" id="clientTableBody">
+                            <tbody class="main__divTable-table--tbody" id="clientTableBody">
                                 
                             </tbody>
                         </table>
@@ -146,9 +143,34 @@
                     </div>
 
             </div>
+
+
+            <!-- TABLA Y FORMULARIO DE PROVEEDORES -->
+            <div  class="main__data  main__section" id="section-proveedores">
+                <div class="content-data">
+                    <h1>estos son los proveddores </h1>
+                </div>
+            </div>
+
+
+
+            <!-- TABLA Y FORMULARIO DE PRODUCTOS -->
+             <div  class="main__data  main__section" id="section-productos">
+                <div class="content-data">
+                    <h1>Aqui va todo los productos</h1>
+                </div>
+            </div>
+
+
+            <!-- TABLA Y FORMULARIO DE FACTURAS -->
+             <div  class="main__data  main__section" id="section-factura">
+                <div class="content-data">
+                    <h1>Aqui va todo las facturas</h1>
+                </div>
+            </div>
     </main>
   </section>
-
-  <script src="./app.js"></script>
+  <script src="./api/clientes.js"></script>
+  <script  src="./app.js"></script>
 </body>
 </html>

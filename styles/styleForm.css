@@ -114,7 +114,7 @@ main .main__data .content-data h2 {
   background-color: darkgray; 
 }
 
-.main__divTable-table {
+.main__divTable-table{
   width: 100%;
   border-spacing: 10px;
   word-break: break-all;
@@ -137,6 +137,18 @@ main .main__data .content-data h2 {
    margin-bottom: 50px;
 }
 
+.main__divTable-table--tbody tr:nth-child(even) {
+  background-color: #f9f9f9; 
+}
+
+.main__divTable-table--tbody tr:nth-child(odd) {
+  background-color: #eaf2ff; 
+}
+
+.main__divTable-table--tbody tr {
+  transition: background-color 0.3s ease-in-out;
+}
+
 
 thead tr th.edit {
   text-align: center;
@@ -153,7 +165,7 @@ td button {
   align-items: center;
 }
 
-td button {
+td button i {
   font-size: 25px;
   text-align: center;
 }
