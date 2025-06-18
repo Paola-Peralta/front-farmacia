@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css2') */
+
  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 
 * {
@@ -15,6 +15,7 @@
   --bg-body: #C7E1FF;
   --dark-grey: #8d8d8d;
   --grey: #F1F0F6;
+  --negro:#000000;
 }
 
 #content {
@@ -29,6 +30,11 @@ main {
   padding: 24px 20px 20px 30px;
 }
 
+main .main__title {
+	font-size: 28px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
 main .main__data {
 	display: flex;
 	grid-gap: 20px;
@@ -136,7 +142,7 @@ thead tr th.edit {
   text-align: center;
 }
 
-tbody tr td .opciones {
+tbody tr td .edit {
   text-align: center;
 }
 
@@ -171,6 +177,7 @@ td button:first-child {
   justify-content: center;
 }
   .modal {
+    position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,16 +207,24 @@ td button:first-child {
 
 .modal input {
   width: 100%;
-  outline: none;
-  padding: 5px 10px; 
-  margin-bottom: 20px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+    height: 40px;
+    padding: 5px 10px; 
+    font-size: 16px;
+    background: transparent;
+    color: var(--bg-menu);
+    padding: 0 20px;
+    border: 1px solid var(--negro);
+    border-radius: 10px;
+    outline: none;
+    transition: var(--transition-3s);
+    margin-bottom: 10px;
+    
 }
 
 .modal button {
-  width: 100%;
+  display: block;
+  width: 50%;
+  height: 40px;
   margin: 10px auto;
   outline: none;
   border-radius: 20px; 
@@ -217,6 +232,7 @@ td button:first-child {
   border: none;
   background-color: #0C5FCD;
   color: rgb(255, 255, 255);
+  
 }
 .modal .close-btn {
   position: absolute;
@@ -224,7 +240,7 @@ td button:first-child {
   right: 15px;
   font-size: 28px;
   font-weight: bold;
-  color: #333;
+  color: #000000;
   cursor: pointer;
 }
 

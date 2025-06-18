@@ -1,0 +1,33 @@
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/styles/stylelogin.css">
+</head>
+
+<body>
+    <div class="login">
+        <div class="login__form-header">
+            <div class="titles">
+                <div class="title__login">Login</div>
+            </div>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form action="#" class="login-form"  id="login-form" autocomplete="off">
+            <div class="form__input-box">
+                <input type="text" class="form__input-field" id="username" placeholder=" "required>
+                <label for="log-email" class="label">Usuario</label>
+                <i class='bx bx-envelope icon'></i>
+            </div>
+            <div class="form__input-box">
+                <input type="password" class="form__input-field" id="password" placeholder=" " required>
+                <label for="log-pass" class="label">Contraseña</label>
+                <i class='bx bx-lock-alt icon'></i>
+            </div>
+            <div class="form__input-box">
+                <button class="btn-submit" id="SignInBtn">Iniciar Sesión <i class='bx bx-log-in'></i></button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/api/Auth.js" ></script>
+</body>
