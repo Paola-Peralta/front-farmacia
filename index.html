@@ -11,6 +11,7 @@
 
     
     <link rel="stylesheet" href="/styles/styleForm.css">
+    <script src="./app.js" defer></script>
 </head>
 <body>
   <!-- Menu lateral -->
@@ -21,7 +22,7 @@
 
       <li class="sidebar__divisor" data-text="OPERACIONES"> Operaciones</li>
 
-      <li>  <a href="#"  class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
+      <li>  <a href="#" data-target="section-productos"  class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
       <li> <a href="#"> <i class="bx bx-file-blank sidebar__icon"> </i> Factura</a></li>
       <li> <a href="#"> <i class="bx bx-message-square sidebar__icon"> </i> Compras</a></li>
 
@@ -98,6 +99,7 @@
                                 
                             </tbody>
                         </table>
+                        <!-- <div id="paginationButtons" style="margin-top: 15px; text-align: center;"></div> -->
                     </div>
                 </div>
 
@@ -146,19 +148,174 @@
 
 
             <!-- TABLA Y FORMULARIO DE PROVEEDORES -->
-            <div  class="main__data  main__section" id="section-proveedores">
+
+            <div class="main__data main__section"  id="section-proveedores" > 
                 <div class="content-data">
-                    <h1>estos son los proveddores </h1>
+                    <h2>Registro de Proveedores</h2>
+
+                    <div class="main__divTable">
+                        <div class="main__div-header">
+                            <button onclick="openModalProveedores()" id="new" class="main__new-register">Registrar Proveedor</button>
+                        </div>
+                        <table class="main__divTable-table">
+                            <thead class="main__divTable-table--thead">
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Nombres</th>
+                                        <th>Primer Apellido</th>
+                                        <th>Segundo Apellido</th>
+                                        <th>Email</th>
+                                        <th>Dirección</th>
+                                        <th>Teléfono</th>
+                                        <th class="edit">Editar</th>
+                                        <th class="edit">Eliminar</th> 
+                                    </tr>                 
+                            </thead>
+                            <tbody class="main__divTable-table--tbody" id="ProveedorTableBody">
+                                
+                            </tbody>
+                        </table>
+                        <!-- <div id="paginationButtons" style="margin-top: 15px; text-align: center;"></div> -->
+                    </div>
                 </div>
+
+                    <!--MODAL-->
+                    <div id="modalProveedor"  class="modal__container">
+                        <div class="modal">
+                            <span class="close-btn" id="close-btn-proveedores">&times;</span>
+                            <form id="clientsForm">
+                                <h2>Agregar nuevo proveedor</h2>
+                                <br>
+                                <input type="hidden" id="clientId">
+
+                                 <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="pv-codigo">Código</label>
+                                        <input id="pv-codigo" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pv-name">Nombres</label>
+                                        <input id="pv-name" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pv-fname">Primer Apellido</label>
+                                        <input id="pv-fname" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pv-sname">Segundo Apellido</label>
+                                        <input id="pv-sname" type="text" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pv-correo">Correo</label>
+                                        <input id="pv-correo" type="text" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pv-address">Dirección</label>
+                                        <input id="pv-address" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pv-phone">Teléfono</label>
+                                        <input id="pv-phone" type="text" required />
+                                    </div>
+                                </div>
+                                <button type="submit" id="btnSave">Guardar</button>
+
+                            </form>
+                        </div>
+                    </div>
+
             </div>
 
 
 
             <!-- TABLA Y FORMULARIO DE PRODUCTOS -->
-             <div  class="main__data  main__section" id="section-productos">
+              <div class="main__data main__section"  id="section-productos" > 
                 <div class="content-data">
-                    <h1>Aqui va todo los productos</h1>
+                    <h2>Inventario</h2>
+
+                    <div class="main__divTable">
+                        <div class="main__div-header">
+                            <button onclick="openModalProductos()" id="new" class="main__new-register">Registrar Producto</button>
+                        </div>
+                        <table class="main__divTable-table">
+                            <thead class="main__divTable-table--thead">
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Fecha de Vencimiento</th>
+                                        <th>precio</th>
+                                        <th>Categoria</th>
+                                        <th>Unidad de medida</th>
+                                        <th>Presentación</th>
+                                        <th class="edit">Editar</th>
+                                        <th class="edit">Eliminar</th> 
+                                    </tr>                 
+                            </thead>
+                            <tbody class="main__divTable-table--tbody" id="productsTableBody">
+                                
+                            </tbody>
+                        </table>
+                        <!-- <div id="paginationButtons" style="margin-top: 15px; text-align: center;"></div> -->
+                    </div>
                 </div>
+
+                    <!--MODAL-->
+                    <div id="modalProductos"  class="modal__container">
+                        <div class="modal">
+                            <span class="close-btn" id="close-productos" >&times;</span>
+                            <form id="clientsForm">
+                                <h2>Agregar nuevo producto</h2>
+                                <br>
+                                <input type="hidden" id="clientId">
+
+                                 <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="p-codigo">Código</label>
+                                        <input id="p-codigo" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="p-name">Nombre de producto</label>
+                                        <input id="p-name" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cantidad">cantidad</label>
+                                        <input id="cantidad" type="text" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                                        <input id="fechaVencimiento" type="date" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="precio">Precio</label>
+                                        <input id="precio" type="number" required />
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label for="categoria">Categoría</label>
+                                        <select id="categoria" required></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="unidadMedida">Unidad de Medida</label>
+                                        <select id="unidadMedida" required></select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="presentacion">Presentación</label>
+                                        <select id="presentacion" required></select>
+                                    </div>
+
+                                </div>
+                                <button type="submit" id="btnSave">Guardar</button>
+
+                            </form>
+                        </div>
+                    </div>
+
             </div>
 
 
@@ -171,6 +328,6 @@
     </main>
   </section>
   <script src="./api/clientes.js"></script>
-  <script  src="./app.js"></script>
+  <!-- <script  src="./app.js"></script> -->
 </body>
 </html>

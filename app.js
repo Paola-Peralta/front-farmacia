@@ -1,4 +1,3 @@
-// import { loadClientes } from './api/clientes';
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -77,11 +76,8 @@ toggleSidebar.addEventListener('click', function () {
 document.getElementById('logoutLink').addEventListener('click', function(e) {
     e.preventDefault();
 
-    // Si usas localStorage o sessionStorage:
     localStorage.clear();
     sessionStorage.clear();
-
-    // O si tienes cookies, puedes limpiarlas también si es necesario
 
     // Redirigir al login
     window.location.href = '/Auth/login.html';
@@ -121,7 +117,7 @@ document.getElementById('logoutLink').addEventListener('click', function(e) {
 //   });
 // });
 
-document.querySelectorAll('.sidebar__dropdown a').forEach(link => {
+document.querySelectorAll('[data-target]').forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.dataset.target;
@@ -150,7 +146,6 @@ document.querySelectorAll('.sidebar__dropdown a').forEach(link => {
 
 //******************modal cliente******************
 
-console.log("clientes.js cargado");
 
 const modal = document.querySelector('#modalAPI');
 const tbody = document.querySelector('#clientTableBody');
@@ -207,4 +202,5 @@ function openModal(edit = false, index = 0){
 closeBtn.addEventListener('click', () => {
   modal.classList.remove('active');
 });
+
 

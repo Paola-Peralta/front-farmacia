@@ -40,11 +40,14 @@ function loadClientes() {
         `;
         tbody.appendChild(tr);
       });
+
+      renderPagination(data.previous, data.next);
     })
     .catch(error => {
       console.error('Error loading clientes:', error);
     });
 }
+
 
 //******************POST*************************** */
 
@@ -100,6 +103,6 @@ form.addEventListener('submit', function (e) {
     })
     .catch(error => {
       console.error('Error al registrar cliente:', error);
-      alert('Error al registrar cliente. Ver consola.');
+      alert('Error al registrar cliente. ');
     });
 });
