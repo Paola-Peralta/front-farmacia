@@ -220,8 +220,18 @@ td button:first-child {
   background-color: white;
   border-radius: 10px;
   width: 50%;
+  max-height: 95vh; 
+  overflow-y: auto;
 }  
 
+.modal::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
 
 .form-grid {
   display: grid;
@@ -230,16 +240,71 @@ td button:first-child {
   width: 100%;
 }
 
+form h2,
+form h3 {
+  width: 100%;
+  margin: 20px 0 10px;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
 } 
 
+.detalle-factura-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.form-gridFactura{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: end;
+  width: 100%;
+}
+.btn-agregar-detalle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 45px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #0C5FCD;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-agregar-detalle i {
+  font-size: 22px;
+}
+
+.btn-agregar-detalle:hover {
+  background-color: var(--bg-menu);
+}
+.form-gridFactura.detalle-factura {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 120px; /* da un ancho fijo al botón */
+  gap: 20px;
+  align-items: end;
+}
+
+.form-groupFactura {
+  display: flex;
+  flex-direction: column;
+}
+
 .modal label {
   font-size: 14px;
   width: 100%;
 }
-
 
 .modal input {
   width: 100%;
@@ -306,6 +371,10 @@ td button:first-child {
 .modal .close-btn:hover {
   color: #e74c3c;
 }
+#totalFactura {
+  width: 200px !important;
+  margin-top: 10px;
+}
 
 .active {
   display: flex;
@@ -313,6 +382,21 @@ td button:first-child {
 
 .active .modal {
   animation: modal .4s;
+}
+
+
+
+
+@media (max-width: 992px) {
+  .form-gridFactura {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+  }
+}
+
+@media (max-width: 576px) {
+  .form-gridFactura {
+    grid-template-columns: 1fr; /* 1 columna en móvil */
+  }
 }
 
 @keyframes modal {

@@ -394,3 +394,36 @@ function cargarPresentaciones() {
     })
     .catch(err => console.error("Error al cargar presentaciones:", err));
 }
+
+
+// ****************** MODAL FACTURA ****************** //
+
+const facturaModal = document.querySelector('#modalFactura');
+const facturaCloseBtn = facturaModal.querySelector('#closeFacturaModal');
+
+function openModalFactura() {
+  facturaModal.classList.add('active');
+
+  // Llenar selects: tipoFactura, sucursal, productoDetalle
+  cargarTiposFactura();
+  cargarSucursales();
+  cargarProductos();  // para el detalle
+
+  // Limpiar campos
+  document.querySelector('#codigoFactura').value = '';
+  document.querySelector('#fechaFactura').value = new Date().toISOString().split('T')[0];
+  document.querySelector('#codigoCliente').value = '';
+  document.querySelector('#nombreCliente').value = '';
+  document.querySelector('#ivaFactura').value = '15';
+  document.querySelector('#descuentoFactura').value = '0';
+  document.querySelector('#productoDetalle').value = '';
+  document.querySelector('#precioDetalle').value = '';
+  document.querySelector('#cantidadDetalle').value = '';
+
+  document.querySelector('#tablaDetalleBody').innerHTML = '';
+  document.querySelector('#totalFactura').value = '0.00';
+}
+
+facturaCloseBtn.addEventListener('click', () => {
+  facturaModal.classList.remove('active');
+});

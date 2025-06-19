@@ -24,7 +24,7 @@
       <li class="sidebar__divisor" data-text="OPERACIONES"> Operaciones</li>
 
       <li>  <a href="#" data-target="section-productos"  class="active">  <i class="bx bx-bar-chart sidebar__icon"></i>Inventario </a></li>
-      <li> <a href="#"> <i class="bx bx-file-blank sidebar__icon"> </i> Factura</a></li>
+      <li> <a href="#" data-target="section-factura"> <i class="bx bx-file-blank sidebar__icon"> </i> Factura</a></li>
       <li> <a href="#"> <i class="bx bx-message-square sidebar__icon"> </i> Compras</a></li>
 
       <li class="sidebar__divisor" data-text="CATALOGOS"> Catalogos</li>
@@ -321,11 +321,124 @@
 
 
             <!-- TABLA Y FORMULARIO DE FACTURAS -->
-             <div  class="main__data  main__section" id="section-factura">
+            <div class="main__data main__section" id="section-factura">
                 <div class="content-data">
-                    <h1>Aqui va todo las facturas</h1>
+                    <h2>Listado de Facturas</h2>
+                    <div class="main__divTable">
+                        <div class="main__div-header">
+                            <button onclick="openModalFactura()" id="new" class="main__new-register">Registrar Factura</button>
+                        </div>
+                    <table class="main__divTable-table">
+                        <thead class="main__divTable-table--thead">
+                        <tr>
+                            <th>Código</th>
+                            <th>Fecha</th>
+                            <th>Cliente</th>
+                            <th>Tipo</th>
+                            <th>Sucursal</th>
+                            <th>IVA</th>
+                            <th>Descuento</th>
+                            <th class="edit">Actualizar</th>
+                            <th class="edit">Detalle</th>
+                        </tr>
+                        </thead>
+                        <tbody class="main__divTable-table--tbody" id="facturaTableBody">
+                        
+                        </tbody>
+                    </table>
+                    <div id="paginationButtons--facturas" class="pagination__container"></div>
+                    </div>
+
+                <div id="modalFactura" class="modal__container">
+                <div class="modal">
+                    <span class="close-btn" id="closeFacturaModal">&times;</span>
+                    <form id="facturaForm">
+                    <h2>Registro de Factura</h2>
+                    <div class="form-gridFactura">
+                        <div class="form-groupFactura">
+                        <label for="codigoFactura">Código</label>
+                        <input type="text" id="codigoFactura" required />
+                        </div>
+                        <div class="form-groupFactura">
+                        <label for="fechaFactura">Fecha</label>
+                        <input type="date" id="fechaFactura" required />
+                        </div>
+                        <div class="form-groupFactura">
+                        <label for="codigoCliente">Código Cliente</label>
+                        <input type="text" id="codigoCliente" required />
+                        </div>
+                        <div class="form-groupFactura">
+                        <label for="nombreCliente">Nombre Cliente</label>
+                        <input type="text" id="nombreCliente" readonly />
+                        </div>
+                        <div class="form-groupFactura">
+                        <label for="tipoFactura">Tipo Factura</label>
+                        <select id="tipoFactura"></select>
+                        </div>
+                        <div class="form-groupFactura">
+                        <label for="sucursalFactura">Sucursal</label>
+                        <select id="sucursalFactura"></select>
+                        </div>
+                        <div class="form-groupFactura">
+                        <label for="ivaFactura">IVA (%)</label>
+                        <input type="number" id="ivaFactura" value="15" required />
+                        </div>
+                        <div class="form-groupFactura">
+                        <label for="descuentoFactura">Descuento</label>
+                        <input type="number" id="descuentoFactura" value="0" />
+                        </div>
+                    </div>
+
+                     <hr>
+                    <h3>Detalle Factura</h3>
+                    <div class="detalle-factura-container">
+                    <div class="form-gridFactura detalle-factura">
+                        <div class="form-groupFactura">
+                            <label for="productoDetalle">Producto</label>
+                            <select id="productoDetalle"></select>
+                        </div>
+                        <div class="form-groupFactura">
+                            <label for="precioDetalle">Precio</label>
+                            <input type="number" id="precioDetalle" readonly />
+                        </div>
+                        <div class="form-groupFactura">
+                            <label for="cantidadDetalle">Cantidad</label>
+                            <input type="number" id="cantidadDetalle" min="1" />
+                        </div>
+                        <div class="form-groupFactura agregar-btn-wrapper">
+                        <label>&nbsp;</label>
+                        <button type="button" id="btnAgregarDetalle" class="btn-agregar-detalle">
+                            <i class='bx bx-plus-circle'></i> 
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+
+                    <table class="main__divTable-table">
+                        <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            <th>Eliminar</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tablaDetalleBody">
+                        </tbody>
+                    </table>
+
+                    <div class="form-groupFactura">
+                        <label for="totalFactura">Total</label>
+                        <input type="text" id="totalFactura" readonly />
+                    </div>
+
+                    <button type="submit">Guardar Factura</button>
+                    </form>
                 </div>
             </div>
+
+             
     </main>
   </section>
   <script src="./api/clientes.js"></script>
