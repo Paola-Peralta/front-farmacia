@@ -163,7 +163,7 @@ form.addEventListener('submit', function (e) {
     });
 });
 
-// 🔁 PAGINACIÓN
+//  PAGINACIÓN
 function renderPagination(previous, next) {
   const container = document.getElementById('paginationButtons');
   container.innerHTML = '';
