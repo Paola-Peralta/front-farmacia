@@ -134,7 +134,14 @@ document.querySelectorAll('[data-target]').forEach(link => {
 
           if (targetId === 'section-clientes') {
           loadClientes();
+          
         }
+        if (targetId === 'section-productos') {
+          loadProductos();
+          
+        }
+        
+        
       }
     });
   });
@@ -288,6 +295,11 @@ let idProductos;
 function openModalProductos(edit = false, index = 0){
      ProductoModal.classList.add('active');
 
+     cargarCategorias();
+    cargarMedidas();
+    cargarPresentaciones();
+
+
     ProductoModal.onclick = e => {
         if(e.target.className.indexOf('modalProductos')!== -1)
         {
@@ -325,3 +337,60 @@ ProductoCloseBtn.addEventListener('click', () => {
 });
 
 
+
+function cargarCategorias() {
+  const token = localStorage.getItem('accessToken');
+  fetch('http://127.0.0.1:8000/catalogos/catalogos/categorias/', {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const select = document.getElementById('categoria');
+      select.innerHTML = '<option value="">Seleccione</option>';
+      data.results.forEach(c => {
+        const option = document.createElement('option');
+        option.value = c.id;
+        option.textContent = c.descripcion;
+        select.appendChild(option);
+      });
+    })
+    .catch(err => console.error("Error al cargar categorías:", err));
+}
+
+function cargarMedidas() {
+  const token = localStorage.getItem('accessToken');
+  fetch('http://127.0.0.1:8000/catalogos/catalogos/medidas/', {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const select = document.getElementById('unidadMedida');
+      select.innerHTML = '<option value="">Seleccione</option>';
+      data.results.forEach(m => {
+        const option = document.createElement('option');
+        option.value = m.id;
+        option.textContent = m.descripcion;
+        select.appendChild(option);
+      });
+    })
+    .catch(err => console.error("Error al cargar medidas:", err));
+}
+
+function cargarPresentaciones() {
+  const token = localStorage.getItem('accessToken');
+  fetch('http://127.0.0.1:8000/catalogos/catalogos/presentaciones/', {
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const select = document.getElementById('presentacion');
+      select.innerHTML = '<option value="">Seleccione</option>';
+      data.results.forEach(p => {
+        const option = document.createElement('option');
+        option.value = p.id;
+        option.textContent = p.descripcion;
+        select.appendChild(option);
+      });
+    })
+    .catch(err => console.error("Error al cargar presentaciones:", err));
+}

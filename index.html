@@ -11,7 +11,8 @@
 
     
     <link rel="stylesheet" href="/styles/styleForm.css">
-    <script src="./app.js" defer></script>
+    <!-- <script src="./app.js" defer></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <!-- Menu lateral -->
@@ -99,7 +100,7 @@
                                 
                             </tbody>
                         </table>
-                        <!-- <div id="paginationButtons" style="margin-top: 15px; text-align: center;"></div> -->
+                        <div id="paginationButtons" class="pagination__container"></div>
                     </div>
                 </div>
 
@@ -266,10 +267,10 @@
                     <div id="modalProductos"  class="modal__container">
                         <div class="modal">
                             <span class="close-btn" id="close-productos" >&times;</span>
-                            <form id="clientsForm">
+                            <form id="productosForm">
                                 <h2>Agregar nuevo producto</h2>
                                 <br>
-                                <input type="hidden" id="clientId">
+                                <input type="hidden" id="productoId">
 
                                  <div class="form-grid">
                                     <div class="form-group">
@@ -328,6 +329,8 @@
     </main>
   </section>
   <script src="./api/clientes.js"></script>
+  <script src="./app.js" ></script>
+  <script src="./api/productos.js"></script>
   <!-- <script  src="./app.js"></script> -->
 </body>
 </html>

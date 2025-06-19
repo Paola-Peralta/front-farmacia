@@ -174,7 +174,30 @@ td button:first-child {
   margin-right: 10px;
 }
 
+.pagination__container {
+  text-align: center;
+  margin-top: 15px;
+}
 
+.pagination__container button {
+  margin: 0 4px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--dark-grey);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.pagination__container button:hover {
+  background-color: var(--bg-menu);
+}
+
+.pagination__container button.active {
+  background-color: var(--dark-grey);
+}
 /*estilo del modal*/
 .modal__container {
   width: 100vw;
