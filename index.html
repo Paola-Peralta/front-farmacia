@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="/style.css">
     <title>Farmacia Angeluzz</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     
     <link rel="stylesheet" href="/styles/styleForm.css">
     <!-- <script src="./app.js" defer></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
   <!-- Menu lateral -->
@@ -338,7 +340,6 @@
                             <th>Sucursal</th>
                             <th>IVA</th>
                             <th>Descuento</th>
-                            <th class="edit">Actualizar</th>
                             <th class="edit">Detalle</th>
                         </tr>
                         </thead>
@@ -365,7 +366,8 @@
                         </div>
                         <div class="form-groupFactura">
                         <label for="codigoCliente">Código Cliente</label>
-                        <input type="text" id="codigoCliente" required />
+                        <select id="codigoCliente"></select>
+                        <!-- <input type="text" id="codigoCliente" required /> -->
                         </div>
                         <div class="form-groupFactura">
                         <label for="nombreCliente">Nombre Cliente</label>
@@ -441,9 +443,14 @@
              
     </main>
   </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   <script src="./api/clientes.js"></script>
   <script src="./app.js" ></script>
   <script src="./api/productos.js"></script>
+  <script src="./api/factura.js"></script>
   <!-- <script  src="./app.js"></script> -->
 </body>
 </html>

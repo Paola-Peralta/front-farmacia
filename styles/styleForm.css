@@ -384,7 +384,38 @@ form h3 {
   animation: modal .4s;
 }
 
+.select2-container--default .select2-selection--single {
+  height: 40px !important;
+  line-height: 40px !important;
+  padding-left: 20px !important;
+  font-size: 16px !important;
+  background-color: transparent !important;
+  border: 1px solid var(--negro) !important;
+  border-radius: 10px !important;
+  color: var(--bg-menu) !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+}
 
+/* Color del texto seleccionado */
+.select2-selection__rendered {
+  color: var(--bg-menu) !important;
+  font-family: inherit !important;
+}
+
+/* Flecha del select */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 40px !important;
+  top: 0px !important;
+  right: 10px !important;
+}
+
+/* Ajustes generales */
+.select2-container {
+  width: 100% !important;
+  margin-bottom: 10px !important;
+}
 
 
 @media (max-width: 992px) {

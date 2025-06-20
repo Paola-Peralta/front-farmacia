@@ -103,7 +103,7 @@ function loadProductos(url = 'http://127.0.0.1:8000/catalogos/productos/') {
  
       });
 
-      renderPaginationProductos(data.previous, data.next);
+      // renderPaginationProductos(data.previous, data.next);
     })
     .catch(error => {
       console.error('Error loading Productos:', error);

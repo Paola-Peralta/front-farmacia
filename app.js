@@ -1,14 +1,19 @@
 
+const token = localStorage.getItem("accessToken");
+const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
-  const token = localStorage.getItem("accessToken");
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  // const token = localStorage.getItem("accessToken");
+  // const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   // Si no hay token o no está marcado como logueado, redirige al login
   if (!token || isLoggedIn !== "true") {
     window.location.href = "/Auth/login.html"; // Asegúrate que esta sea la ruta correcta
   }
 });
+
 
 // SIDEBAR DROPDOWN
 const allDropdown = document.querySelectorAll('#sidebar .sidebar__dropdown');
@@ -138,6 +143,10 @@ document.querySelectorAll('[data-target]').forEach(link => {
         }
         if (targetId === 'section-productos') {
           loadProductos();
+          
+        }
+        if (targetId === 'section-factura') {
+          loadFacturas();
           
         }
         
@@ -401,16 +410,15 @@ function cargarPresentaciones() {
 const facturaModal = document.querySelector('#modalFactura');
 const facturaCloseBtn = facturaModal.querySelector('#closeFacturaModal');
 
+
 function openModalFactura() {
   facturaModal.classList.add('active');
 
-  // Llenar selects: tipoFactura, sucursal, productoDetalle
-  cargarTiposFactura();
-  cargarSucursales();
-  cargarProductos();  // para el detalle
+     cargarTiposFactura();
+     cargarSucursal();
 
   // Limpiar campos
-  document.querySelector('#codigoFactura').value = '';
+   document.querySelector('#codigoFactura').value = '';
   document.querySelector('#fechaFactura').value = new Date().toISOString().split('T')[0];
   document.querySelector('#codigoCliente').value = '';
   document.querySelector('#nombreCliente').value = '';
@@ -427,3 +435,172 @@ function openModalFactura() {
 facturaCloseBtn.addEventListener('click', () => {
   facturaModal.classList.remove('active');
 });
+
+
+$(document).ready(function() {
+  const token = localStorage.getItem('accessToken');
+
+  $('#productoDetalle').select2({
+    placeholder: 'Seleccione producto',
+    width: '100%',
+    ajax: {
+      url: 'http://127.0.0.1:8000/catalogos/productos/',
+      headers: { 'Authorization': `Bearer ${token}` },
+      dataType: 'json',
+      delay: 250, 
+      data: function(params) {
+        return {
+          search: params.term, 
+          page: params.page || 1
+        };
+      },
+      processResults: function(data, params) {
+        params.page = params.page || 1;
+        return {
+          results: data.results.map(producto => ({
+            id: producto.id,
+            text: producto.nombreProducto
+          })),
+          pagination: {
+            more: Boolean(data.next)
+          }
+        };
+      },
+      cache: true
+    },
+    minimumInputLength: 1 // mínimo 1 carácter para buscar
+  });
+
+  // Evento para actualizar precio cuando cambie producto
+  $('#productoDetalle').on('change', function () {
+    const productoId = $(this).val();
+
+    if (!productoId) {
+      $('#precioDetalle').val('');
+      return;
+    }
+
+    
+    fetch(`http://127.0.0.1:8000/catalogos/productos/${productoId}/`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+    .then(res => res.json())
+    .then(producto => {
+      $('#precioDetalle').val(producto.precio);
+    })
+    .catch(() => {
+      $('#precioDetalle').val('');
+    });
+  });
+});
+
+
+
+//****CARGAR CODIGO DE CLIENTES********** */
+$('#codigoCliente').select2({
+  placeholder: 'Buscar cliente por código',
+  width: '100%',
+  ajax: {
+    url: 'http://127.0.0.1:8000/catalogos/clientes/',
+    headers: { 'Authorization': `Bearer ${token}` },
+    dataType: 'json',
+    delay: 250,
+    data: function (params) {
+      return {
+        search: params.term,
+        page: params.page || 1
+      };
+    },
+    processResults: function (data, params) {
+      params.page = params.page || 1;
+      return {
+        results: data.results.map(cliente => ({
+          id: cliente.id,
+          text: `${cliente.codigo}`
+        })),
+        pagination: {
+          more: Boolean(data.next)
+        }
+      };
+    },
+    cache: true
+  },
+  minimumInputLength: 1
+});
+
+
+$('#codigoCliente').on('change', function () {
+  const clienteId = $(this).val();
+
+  if (!clienteId) {
+    $('#nombreCliente').val('');
+    return;
+  }
+
+  fetch(`http://127.0.0.1:8000/catalogos/clientes/${clienteId}/`, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(res => res.json())
+    .then(cliente => {
+      $('#nombreCliente').val(cliente.nombres);
+    })
+    .catch(() => {
+      $('#nombreCliente').val('');
+    });
+});
+
+
+
+function cargarTiposFactura() {
+  const token = localStorage.getItem('accessToken');
+
+  fetch('http://127.0.0.1:8000/catalogos/tipoFactura/tipoFactura/', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    const select = document.getElementById('tipoFactura');
+    select.innerHTML = '<option value="">Seleccione</option>';
+
+    const resultados = data.results || data; // por si tiene paginación o no
+    resultados.forEach(tipo => {
+      const option = document.createElement('option');
+      option.value = tipo.id;
+      option.textContent = tipo.descripcion;
+      select.appendChild(option);
+    });
+  })
+  .catch(err => {
+    console.error('Error al cargar tipos de factura:', err);
+  });
+}
+
+function cargarSucursal() {
+  const token = localStorage.getItem('accessToken');
+
+  fetch('http://127.0.0.1:8000/catalogos/catalogos/sucursal/', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    const select = document.getElementById('sucursalFactura');
+    select.innerHTML = '<option value="">Seleccione</option>';
+
+    const resultados = data.results || data; // por si tiene paginación o no
+    resultados.forEach(sucursal => {
+      const option = document.createElement('option');
+      option.value = sucursal.id;
+      option.textContent = sucursal.nombre;
+      select.appendChild(option);
+    });
+  })
+  .catch(err => {
+    console.error('Error al cargar sucursales:', err);
+  });
+}
