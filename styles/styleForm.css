@@ -174,30 +174,39 @@ td button:first-child {
   margin-right: 10px;
 }
 
+/* Contenedor de los botones de paginación */
 .pagination__container {
-  text-align: center;
-  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
 }
+
 
 .pagination__container button {
-  margin: 0 4px;
   padding: 6px 12px;
+  background-color: #e0e0e0;
   border: none;
-  border-radius: 4px;
-  background-color: var(--dark-grey);
-  color: #fff;
-  font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: 500;
+  color: #333;
+  transition: background-color 0.2s ease;
 }
 
+
 .pagination__container button:hover {
-  background-color: var(--bg-menu);
+  background-color: #c9c9c9;
 }
 
 .pagination__container button.active {
-  background-color: var(--dark-grey);
+  background-color: var(--bg-menu);
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #5e337b;
 }
+
 /*estilo del modal*/
 .modal__container {
   width: 100vw;
@@ -235,7 +244,7 @@ td button:first-child {
 
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columnas */
+  grid-template-columns: 1fr 1fr; 
   gap: 20px;
   width: 100%;
 }
@@ -291,7 +300,7 @@ form h3 {
 }
 .form-gridFactura.detalle-factura {
   display: grid;
-  grid-template-columns: repeat(3, 1fr) 120px; /* da un ancho fijo al botón */
+  grid-template-columns: repeat(3, 1fr) 120px; 
   gap: 20px;
   align-items: end;
 }
@@ -398,20 +407,20 @@ form h3 {
   align-items: center !important;
 }
 
-/* Color del texto seleccionado */
+
 .select2-selection__rendered {
   color: var(--bg-menu) !important;
   font-family: inherit !important;
 }
 
-/* Flecha del select */
+
 .select2-container--default .select2-selection--single .select2-selection__arrow {
   height: 40px !important;
   top: 0px !important;
   right: 10px !important;
 }
 
-/* Ajustes generales */
+
 .select2-container {
   width: 100% !important;
   margin-bottom: 10px !important;
@@ -420,13 +429,13 @@ form h3 {
 
 @media (max-width: 992px) {
   .form-gridFactura {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 
 @media (max-width: 576px) {
   .form-gridFactura {
-    grid-template-columns: 1fr; /* 1 columna en móvil */
+    grid-template-columns: 1fr; 
   }
 }
 

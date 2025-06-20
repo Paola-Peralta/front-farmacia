@@ -38,7 +38,10 @@ function loadFacturas(url = 'http://127.0.0.1:8000/movimientos/facturas/') {
     });
 
     });
-    renderPaginationFactura(data.previous, data.next);
+    const pageMatch = url.match(/page=(\d+)/);
+      const currentPage = pageMatch ? parseInt(pageMatch[1]) : 1;
+
+      renderPaginationFactura(currentPage, data.count, 10);
   })
 
   
@@ -208,3 +211,23 @@ document.getElementById('tablaDetalleBody').addEventListener('click', function (
     }
   }
 });
+
+function renderPaginationFactura(currentPage, totalItems, pageSize = 10) {
+  const container = document.getElementById('paginationButtons--facturas');
+  container.innerHTML = '';
+
+  const totalPages = Math.ceil(totalItems / pageSize);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    btn.classList.add('pagination-btn');
+    if (i === currentPage) btn.classList.add('active');
+
+    btn.addEventListener('click', () => {
+      loadFacturas(`http://127.0.0.1:8000/movimientos/facturas/?page=${i}`);
+    });
+
+    container.appendChild(btn);
+  }
+}

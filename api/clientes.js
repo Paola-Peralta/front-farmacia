@@ -98,7 +98,10 @@ function loadClientes(url = 'http://127.0.0.1:8000/catalogos/clientes/') {
         });
       });
 
-      renderPagination(data.previous, data.next);
+      const pageMatch = url.match(/page=(\d+)/);
+      const currentPage = pageMatch ? parseInt(pageMatch[1]) : 1;
+
+      renderPagination(currentPage, data.count, 10);
     })
     .catch(error => {
       console.error('Error loading clientes:', error);
@@ -164,21 +167,24 @@ form.addEventListener('submit', function (e) {
 });
 
 //  PAGINACIÓN
-function renderPagination(previous, next) {
+function renderPagination(currentPage, totalItems, pageSize = 10) {
   const container = document.getElementById('paginationButtons');
   container.innerHTML = '';
 
-  if (previous) {
-    const prevBtn = document.createElement('button');
-    prevBtn.textContent = 'Anterior';
-    prevBtn.addEventListener('click', () => loadClientes(previous));
-    container.appendChild(prevBtn);
-  }
+  const totalPages = Math.ceil(totalItems / pageSize);
 
-  if (next) {
-    const nextBtn = document.createElement('button');
-    nextBtn.textContent = 'Siguiente';
-    nextBtn.addEventListener('click', () => loadClientes(next));
-    container.appendChild(nextBtn);
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    btn.classList.add('pagination-btn');
+    if (i === currentPage) btn.classList.add('active');
+
+    btn.addEventListener('click', () => {
+      loadClientes(`http://127.0.0.1:8000/catalogos/clientes/?page=${i}`);
+    });
+
+    container.appendChild(btn);
   }
 }
+
+

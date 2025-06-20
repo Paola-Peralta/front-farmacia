@@ -103,7 +103,11 @@ function loadProductos(url = 'http://127.0.0.1:8000/catalogos/productos/') {
  
       });
 
-      // renderPaginationProductos(data.previous, data.next);
+      //  renderPaginationProducts(data.previous, data.next);
+      const pageMatch = url.match(/page=(\d+)/);
+      const currentPage = pageMatch ? parseInt(pageMatch[1]) : 1;
+
+      renderPaginationProducts(currentPage, data.count, 10);
     })
     .catch(error => {
       console.error('Error loading Productos:', error);
@@ -175,8 +179,8 @@ productoForm.addEventListener('submit', function (e) {
 });
 
 // //  PAGINACIÓN
-// function renderPagination(previous, next) {
-//   const container = document.getElementById('paginationButtons');
+// function renderPaginationProducts(previous, next) {
+//   const container = document.getElementById('paginationButtons--products');
 //   container.innerHTML = '';
 
 //   if (previous) {
@@ -193,3 +197,23 @@ productoForm.addEventListener('submit', function (e) {
 //     container.appendChild(nextBtn);
 //   }
 // }
+
+function renderPaginationProducts(currentPage, totalItems, pageSize = 10) {
+  const container = document.getElementById('paginationButtons--products');
+  container.innerHTML = '';
+
+  const totalPages = Math.ceil(totalItems / pageSize);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    btn.classList.add('pagination-btn');
+    if (i === currentPage) btn.classList.add('active');
+
+    btn.addEventListener('click', () => {
+      loadProductos(`http://127.0.0.1:8000/catalogos/productos/?page=${i}`);
+    });
+
+    container.appendChild(btn);
+  }
+}

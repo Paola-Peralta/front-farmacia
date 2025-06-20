@@ -5,10 +5,6 @@ const isLoggedIn = localStorage.getItem("isLoggedIn");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // const token = localStorage.getItem("accessToken");
-  // const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-  // Si no hay token o no está marcado como logueado, redirige al login
   if (!token || isLoggedIn !== "true") {
     window.location.href = "/Auth/login.html"; // Asegúrate que esta sea la ruta correcta
   }
@@ -87,40 +83,9 @@ document.getElementById('logoutLink').addEventListener('click', function(e) {
     // Redirigir al login
     window.location.href = '/Auth/login.html';
   });
-// // Esperar a que el DOM cargue
-// document.addEventListener("DOMContentLoaded", function () {
-//   const links = document.querySelectorAll(".sidebar__menu a");
-//   const content = document.getElementById("contentMain");
 
-//   links.forEach(link => {
-//     link.addEventListener("click", function (e) {
-//       const url = this.getAttribute("href");
 
-//       // Verifica que sea una ruta relativa válida
-//       if (url && url !== "#") {
-//         e.preventDefault(); // Prevenir navegación completa
 
-//         fetch(url)
-//           .then(response => {
-//             if (!response.ok) throw new Error("Página no encontrada");
-//             return response.text();
-//           })
-//           .then(html => {
-//             // Extraer solo el contenido que te interesa
-//             const parser = new DOMParser();
-//             const doc = parser.parseFromString(html, "text/html");
-//             const mainContent = doc.querySelector("main") || doc.body;
-
-//             content.innerHTML = mainContent.innerHTML;
-//           })
-//           .catch(err => {
-//             content.innerHTML = `<p style="color:red">Error cargando contenido</p>`;
-//             console.error(err);
-//           });
-//       }
-//     });
-//   });
-// });
 
 document.querySelectorAll('[data-target]').forEach(link => {
     link.addEventListener('click', function (e) {
@@ -132,6 +97,7 @@ document.querySelectorAll('[data-target]').forEach(link => {
         section.style.display = 'none';
       });
 
+      
       // Muestra la sección correspondiente
       const targetSection = document.getElementById(targetId);
       if (targetSection) {

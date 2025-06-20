@@ -12,6 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     
     <link rel="stylesheet" href="/styles/styleForm.css">
+    <!-- <link rel="stylesheet" href="styles/dashboard.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" ></script>
+    <link rel="stylesheet" href="/styles/dashboard.css">
     <!-- <script src="./app.js" defer></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -64,7 +67,7 @@
           </form>
 
             <!-- iconos de notificaciones -->
-            <a class="nav__link" href="#"> <i class="bx bx-home nav__link-icon"></i> </a>
+            <a class="nav__link" href="#" data-target="home" > <i class="bx bx-home nav__link-icon"></i> </a>
             <a class="nav__link" href="#"> <i class="bx bxs-bell nav__link-icon"></i>
                 <span class="nav__link-badge">5</span> </a>
             <li><a class="nav__link"  href="#" id="logoutLink"> <i class="bx bxs-log-out-circle nav__link-icon"></i>Cerrar Sesión</a></li>
@@ -75,6 +78,34 @@
     <main>
       <h1 class="main__title">Panel administrativo de Farmacia Angeluz</h1>
 
+      <div class="main__section" id="home">
+         <h1>Resumen de Ventas</h1>
+
+        <section class="cards">
+            <div class="card" id="ventas-anuales">
+                <h3>Ventas Diarias</h3>
+                <p class="value">0</p>
+            </div>
+
+            <div class="card" id="total-ingresos">
+                <h3>Total Ingresos</h3>
+                <p class="value">$ 0.00</p>
+            </div>
+
+            <div class="card" id="producto-top">
+                <h3>Producto Vendidos</h3>
+                <p class="value">Cargando...</p>
+            </div>
+        </section>
+
+            <section class="chart-section">
+                <h3>Ventas por Mes</h3>
+                <canvas id="ventasMensualesChart" width="400" height="150"></canvas>
+            </section>
+      </div>
+
+
+      
 
       <!--TABLA Y FORMULARIO DE CLIENTES -->
       <div class="main__data main__section"  id="section-clientes" > 
@@ -446,8 +477,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+  
   <script src="./api/clientes.js"></script>
+ <script src="./api/dashboard.js"></script>
   <script src="./app.js" ></script>
   <script src="./api/productos.js"></script>
   <script src="./api/factura.js"></script>
